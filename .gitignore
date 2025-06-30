@@ -1,0 +1,8 @@
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+
+# Docker Compose (optional, depending on your project needs)
+docker-compose.yml
