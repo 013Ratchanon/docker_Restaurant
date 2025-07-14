@@ -8,7 +8,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   logging: false,
 });
 
-testConnection = async () => {
+const testConnection = async () => {
   try {
     await sequelize.authenticate();
     console.log("Connection has been etablished successfully");

@@ -5,7 +5,7 @@ const Restaurant = sequelize.define("restaurant", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoincrement: true,
+    autoIncrement: true,
   },
   name: {
     type: DataTypes.STRING,
@@ -21,7 +21,7 @@ const Restaurant = sequelize.define("restaurant", {
   },
 });
 
-Restaurant.sync({ force: true })
+Restaurant.sync({ force: false })
   .then(() => {
     console.log("Table created or already exists");
   })

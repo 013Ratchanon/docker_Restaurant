@@ -1,4 +1,4 @@
-import Restaurant from "../models/restaurant.modal.js";
+import Restaurant from "../models/restaurant.model.js";
 const restaurantController = {};
 //Create and save a new restaurant
 restaurantController.create = async (req, res) => {
