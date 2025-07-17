@@ -4,13 +4,13 @@ const Update = () => {
   //1. Get Id from URL
   const { id } = useParams();
   const [restaurant, setRestaurants] = useState({
-    title: "",
+    name: "",
     type: "",
-    img: "",
+    imgUrl: "",
   });
   //2. Get Restaurant by ID
   useEffect(() => {
-    fetch("http://localhost:5000/restaurants/" + id) 
+    fetch("http://localhost:5000/api/v1/restaurants/" + id)
       .then((res) => {
         // convert to json format
         return res.json();
@@ -30,16 +30,22 @@ const Update = () => {
   };
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:5000/restaurants/" + id, {
-        method: "PUT",
-        body: JSON.stringify(restaurant),
-      });
+      const response = await fetch(
+        "http://localhost:5000/api/v1/restaurants/" + id,
+        {
+          method: "PUT",
+          body: JSON.stringify(restaurant),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         alert("Restaurant Update successfully!!");
         setRestaurants({
-          title: "",
+          name: "",
           type: "",
-          img: "",
+          imgUrl: "",
         });
       }
     } catch (error) {
@@ -56,13 +62,13 @@ const Update = () => {
       </div>
 
       <fieldset class="fieldset">
-        <legend class="fieldset-legend">What is your title?</legend>
+        <legend class="fieldset-legend">What is your name?</legend>
         <input
           type="text"
-          name="title"
-          value={restaurant.title}
+          name="name"
+          value={restaurant.name}
           onChange={handleChange}
-          placeholder="Title"
+          placeholder="name"
           class="input input-secondary"
         />
         <legend class="fieldset-legend">What is your type?</legend>
@@ -78,14 +84,14 @@ const Update = () => {
         <input
           type="text"
           name="img"
-          value={restaurant.img}
+          value={restaurant.imgUrl}
           onChange={handleChange}
           placeholder="Img"
           class="input input-info"
         />
-        {restaurant.img && (
+        {restaurant.imgUrl && (
           <div className="flex item-center gap-2">
-            <img className="h-32" src={restaurant.img} />
+            <img className="h-32" src={restaurant.imgUrl} />
           </div>
         )}
       </fieldset>
