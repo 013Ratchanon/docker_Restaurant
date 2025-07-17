@@ -7,7 +7,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   dialect: dbConfig.dialect,
   logging: false,
 });
-
+//
 const testConnection = async () => {
   try {
     await sequelize.authenticate();
